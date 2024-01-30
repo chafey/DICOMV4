@@ -28,6 +28,7 @@
    - Patient Name
    - Patient ID
    - Issuer of Patient ID
+   - Min/Max Pixel Value
 7. Replace use of split DA/TM attributes (e.g. Study Date/Time) with a timestamp that includes the timezone
 8. Deprecate uncompressed transfer syntaxes (require use of a compressed transfer syntax)
 9. Deprecate transcoding functionality
@@ -41,7 +42,7 @@
 
 ### New Capabilities
 
-1. Add new "FHIR inspired" REST APIs
+1. Add new "FHIR aligned" REST APIs
    - Expose IOD Modules as individual resources
    - Adopt FHIR type system
    - Utilize/Integrate with FHIR resources that overlap with DICOM information model (e.g. Patient, ServiceRequest, DiagnosticReport resources)
@@ -50,6 +51,14 @@
    - Transaction - refers to a group of instances created together (e.g. all images in a single acquisition). Will help solve the problem "do I have all instances?"
    - Shape - refers to how a group of ImageFrames should be displayed - 2D Image, 3D Volume, 4D Volume, Cine Clip.
 
+## Open Issues
+
+1. How can we make the data more reliable? Some tags like Min/Max Pixel value are useful but unreliable (may not be present or just plain wrong)
+2. How can we establish authenticity/lineage of data?
+   - Probably some kind of digital signature
+
 ## Discuss
 
 A [discord server](https://discord.gg/DwGrgSQh) has been setup for discussion purposes, [message me on linkedin](https://www.linkedin.com/in/chafey/) if the link expires
+
+[Link](https://atlas.mindmup.com/2024/01/124350c0bfa311eeb7518d9e25e196ca/security_the_state_of_being_free_from_d/index.html) to a mindmap I created on security/safety issues in DICOM
