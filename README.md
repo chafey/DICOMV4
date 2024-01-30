@@ -17,7 +17,7 @@
 
 ## List of specific Changes
 
-## Deprecate/Clarify/Constrain V3 of the standard
+### Deprecate/Clarify/Constrain V3 of the standard
 
 1. Deprecate Implicit Little Endian Transfer syntax since VRs are needed to safely parse the object
 2. Deprecate transfer syntaxes that are slow (e.g. JPEG2000) or limited (JPEG-LS, JPEG Lossless)
@@ -32,12 +32,12 @@
 8. Deprecate uncompressed transfer syntaxes (require use of a compressed transfer syntax)
 9. Deprecate transcoding functionality
 
-## Breaking Changes
+### Breaking Changes
 
 1. Change VR for Rows/Columns to support images > 65535x65535 (lower costs/higher performance for Digital Pathology images via JPIP)
 2. Change VR for Accession Number to LO to support longer real world values
 
-## New Capabilities
+### New Capabilities
 
 1. Add new "FHIR inspired" REST APIs
    - Expose IOD Modules as individual resources
