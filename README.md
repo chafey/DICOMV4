@@ -5,24 +5,45 @@
 - Improved Security
 - Improved Performance
 - Improved Safety
+- Lower Costs
 
 ## Strategy
 
 - Backwards compatible with DICOMv3
-  - Example - All DICOMv3 SOP Instances shall be importable to DICOMv4 but not necessarily the reverse
 - Deprecate things that are not in line with the target benefits
-  - Example - deprecate Implicit Little Endian Transfer syntax since VRs are needed to safely parse the object (Safety Benefit)
-  - Example - deprecate transfer syntaxes that are slow (e.g. JPEG2000) or limited (e.g. do not support signed 16 bit pixel data) (Performance Benefit)
-  - Example - deprecate non RGB uncompressed photometric interpretation (to eliminate US Green image issue!) (Safety Benefit)
-  - Example - deprecate support for unencrypted DIMSE connetions (require TLS) (Security Benefit)
-  - Example - deprecate support for undefined lengths in DICOM P10 (require lengths be emitted) (Performance Benefit)
 - Constrain things that are not in line with the target benefits
-  - Example - Promote some T2/T3 attributes to T1 (e.g. patient name, patient id, issuer of patient id) (Safety Benefit)
 - Clarify things that are not in line with the target benefits
-  - Example -
 - Expand capabilities that are in line with the target benefits
-  - Example: Change VR for Rows/Columns to support images > 65535x65535 (Performance Benefit)
-  - Example: Change VR for Accession number to support longer real world values (Safety Benefit)
+
+## List of specific Changes
+
+## Deprecate/Clarify/Constrain V3 of the standard
+
+1. Deprecate Implicit Little Endian Transfer syntax since VRs are needed to safely parse the object
+2. Deprecate transfer syntaxes that are slow (e.g. JPEG2000) or limited (JPEG-LS, JPEG Lossless)
+3. Deprecate non RGB uncompressed photometric interpretation (to eliminate US Green image issue!)
+4. Deprecate support for unencrypted DIMSE connetions (require TLS)
+5. Deprecate support for undefined lengths in DICOM P10 (require lengths be emitted)
+6. Promote some T2/T3 attributes to T1
+   - Patient Name
+   - Patient ID
+   - Issuer of Patient ID
+7. Replace use of split DA/TM attributes (e.g. Study Date/Time) with a timestamp that includes the timezone
+8. Deprecate uncompressed transfer syntaxes (require use of a compressed transfer syntax)
+9. Deprecate transcoding functionality
+
+## Breaking Changes
+
+1. Change VR for Rows/Columns to support images > 65535x65535 (lower costs/higher performance for Digital Pathology images via JPIP)
+2. Change VR for Accession Number to LO to support longer real world values
+
+## New Capabilities
+
+1. Add new "FHIR inspired" REST APIs
+   - Expose IOD Modules as individual resources
+   - Adopt FHIR type system
+   - Utilize/Integrate with FHIR resources that overlap with DICOM information model (e.g. patient, order, diagnostic report resources)
+2. Make pixel data immutable and referencable via a hash
 
 ## Discuss
 
