@@ -31,6 +31,8 @@
 7. Replace use of split DA/TM attributes (e.g. Study Date/Time) with a timestamp that includes the timezone
 8. Deprecate uncompressed transfer syntaxes (require use of a compressed transfer syntax)
 9. Deprecate transcoding functionality
+10. Deprecate frame fragmentation
+11. Require Basic Offset Table for multi-frame instances
 
 ### Breaking Changes
 
@@ -42,8 +44,11 @@
 1. Add new "FHIR inspired" REST APIs
    - Expose IOD Modules as individual resources
    - Adopt FHIR type system
-   - Utilize/Integrate with FHIR resources that overlap with DICOM information model (e.g. patient, order, diagnostic report resources)
+   - Utilize/Integrate with FHIR resources that overlap with DICOM information model (e.g. Patient, ServiceRequest, DiagnosticReport resources)
 2. Make pixel data immutable and referencable via a hash
+3. New concepts:
+   - Transaction - refers to a group of instances created together (e.g. all images in a single acquisition). Will help solve the problem "do I have all instances?"
+   - Shape - refers to how a group of ImageFrames should be displayed - 2D Image, 3D Volume, 4D Volume, Cine Clip.
 
 ## Discuss
 
