@@ -6,7 +6,7 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 
 ## Benefits
 
-- Improved Security
+- [Improved Security](ImprovedSecurity.md)
 - Improved Performance
 - Improved Safety
 - Lower Costs
@@ -71,13 +71,9 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 4. New concepts:
    - Transaction - refers to a group of instances created together (e.g. all images in a single acquisition). Will help solve the problem "do I have all instances?"
    - Shape - refers to how a group of ImageFrames should be displayed - 2D Image, 3D Volume, 4D Volume, Cine Clip.
+   - [Validation](Validation.md) - refers to a group of instances that meet a certain validation criteria defined by the validator.
 
 ## Open Issues
-
-1. How can we make the data more reliable? Some tags like Min/Max Pixel value are useful but unreliable (may not be present or just plain wrong)
-2. How can we establish authenticity/lineage of data?
-   - Probably some kind of digital signature
-3. Add a concept of "validator" which digitally signs DICOM objects once they have been validated. This will allow clients to validate against the public key of known validators to improve the level of interoperability
 
 ## TODO
 
@@ -88,3 +84,9 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 ## Other related links
 
 [Link](https://atlas.mindmup.com/2024/01/124350c0bfa311eeb7518d9e25e196ca/security_the_state_of_being_free_from_d/index.html) to a mindmap I created on security/safety issues in DICOM
+
+## FAQ
+
+- How would a new version of the DICOM standard fix problems we have today with v3 such as lack of enforcement of compliance?
+  - I like to say "there is no DICOM Police" - that is, there is no one checks and enforces conformance of products to the DICOM standard. In many cases, it is left up to vendors to work around other vendors lack of compliance (this is often a requirement to win new buiness). I don't see this changing, but I do
+    believe a new version of the DICOM standard can make things better by raising the bar for what it means to be compliant with a new version of the standard. For example, unsafe features could be deprecated (e.g. unencrypted DIMSE), optional attributes things could be made mandatory (e.g. digital signatures, patient name required) and new features could be added that might not be possible with the DICOMv3 architecture (e.g. more optimized metadata schema). If DICOMv4 was known as being "much more secure" that V3, customers could use it as a requirement when filtering vendors (e.g. via RFP)
