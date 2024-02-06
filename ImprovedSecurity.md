@@ -1,5 +1,3 @@
 # Improved Security
 
-## Background
-
 TODO

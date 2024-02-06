@@ -13,7 +13,7 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 
 ## Strategy
 
-- Backwards compatible with DICOMv3
+- [Backwards compatible with DICOMv3](DICOMv3Compatibility.md)
 - Deprecate things that are not in line with the target benefits
 - Constrain things that are not in line with the target benefits
 - Clarify things that are not in line with the target benefits
@@ -28,7 +28,7 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
    - 1.2 - Implict Little Endian - all data should be explicit
    - 1.2.1.99 - Deflated Explict - Compression should be done via HTTP content encoding
    - 1.2.2 - Explicit Big Endian - No need for big endian anymore
-   - 1.2.4.50 - JPEG Baseline (lossy 8 bit) - replace with new transfer syntax JPEG-XL which is faster, higher compression ratio and does not degrade JPEG Baseline images
+   - [1.2.4.50 - JPEG Baseline (lossy 8 bit)](JPEGBaselineDeprecation.md) - replace with new transfer syntax JPEG-XL which is faster, higher compression ratio and does not degrade JPEG Baseline images
    - 1.2.4.51 - JPEG Baseline (lossy 12 bit) - rarely used, slower than other codecs, limited to 12 bits
    - 1.2.4.57 - JPEG Lossless - limited to unsigned data, poor compression ratio, slower than HTJ2K
    - 1.2.4.70 - JPEG Lossless - limited to unsigned data, poor compression ratio, slower than HTJ2K
@@ -62,11 +62,7 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 ### New Capabilities
 
 1. Add transfer syntax for JPEG-XL. JPEG-XL is a better "JPEG baseline" - higher compression ratios, faster encode/decode and does not degrade lossy JPEG image quality
-2. Add new "FHIR aligned" REST APIs
-   - Expose IOD Modules as individual resources
-   - Adopt FHIR type system
-   - Utilize/Integrate with FHIR resources that overlap with DICOM information model (e.g. Patient, ServiceRequest, DiagnosticReport resources)
-   - SMART on FHIR for AuthC/AuthZ
+2. Add new ["FHIR aligned" REST APIs](FHIRAlignedRESTAPIS.md)
 3. Make pixel data immutable and referencable via a hash
 4. New concepts:
    - Transaction - refers to a group of instances created together (e.g. all images in a single acquisition). Will help solve the problem "do I have all instances?"
@@ -80,6 +76,7 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 - Add pages for each of the items above with expanded descriptions/information/links/diagrams
 - Review Kevin O'Donnels list of changes and add things to deprecate/clarify/constrain that align with benefits above
 - Review this [linked in post](https://www.linkedin.com/posts/chafey_securitythe-state-of-being-free-from-d-activity-7153796612874493952-sC_7?utm_source=share&utm_medium=member_desktop) for things to add to this list
+- Contemplate how to better align DICOM with the realities of the industry
 
 ## Other related links
 
@@ -88,5 +85,4 @@ the discord link expires, please [message me on linkedin](https://www.linkedin.c
 ## FAQ
 
 - How would a new version of the DICOM standard fix problems we have today with v3 such as lack of enforcement of compliance?
-  - I like to say "there is no DICOM Police" - that is, there is no one checks and enforces conformance of products to the DICOM standard. In many cases, it is left up to vendors to work around other vendors lack of compliance (this is often a requirement to win new buiness). I don't see this changing, but I do
-    believe a new version of the DICOM standard can make things better by raising the bar for what it means to be compliant with a new version of the standard. For example, unsafe features could be deprecated (e.g. unencrypted DIMSE), optional attributes things could be made mandatory (e.g. digital signatures, patient name required) and new features could be added that might not be possible with the DICOMv3 architecture (e.g. more optimized metadata schema). If DICOMv4 was known as being "much more secure" that V3, customers could use it as a requirement when filtering vendors (e.g. via RFP)
+  - I like to say "there is no DICOM Police" - that is, there is no one that checks and enforces conformance of products to the DICOM standard. In many cases, it is left up to vendors to work around other vendors lack of compliance (this is often a requirement to win new buiness). A new version of the DICOM standard cannot solve this issue entirely, but it make things better by raising the bar for what it means to be compliant with a new version of the standard. For example, unsafe features could be deprecated (e.g. unencrypted DIMSE), optional attributes things could be made mandatory (e.g. digital signatures, patient name required) and new features could be added that might not be possible with the DICOMv3 architecture (e.g. more optimized metadata schema). If DICOMv4 was known as being "much more secure" that V3, customers could use it as a requirement when filtering vendors (e.g. via RFP). The [Validation](Validation.md) mechanism can be used to improve the quality and conformance of data as well.
